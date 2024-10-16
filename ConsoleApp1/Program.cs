@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -294,12 +294,20 @@ namespace ConsoleApp2
                                 break;
                             case 7:
                                 Console.WriteLine("----| Квадрат. |----");
-                                Console.WriteLine("Введите число: ");
+                                Console.WriteLine("Введите положительное число: ");
                                 try
                                 {
                                     Console.Write("x =: ");
                                     int x = Convert.ToInt32(Console.ReadLine());
-                                    program.square(x);
+                                    if (x > 0)
+                                    {
+                                        program.square(x);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Введите ПОЛОЖИТЕЛЬНОЕ ЧИСЛО");
+                                    }
+                                    
                                 }
                                 catch (FormatException)
                                 {
@@ -308,12 +316,20 @@ namespace ConsoleApp2
                                 break;
                             case 9:
                                 Console.WriteLine("----| Правый треугольник |----");
-                                Console.WriteLine("Введите число: ");
+                                Console.WriteLine("Введите положительное число: ");
                                 try
                                 {
                                     Console.Write("x =: ");
                                     int x = Convert.ToInt32(Console.ReadLine());
-                                    program.rightTriangle(x);
+                                    if (x > 0)
+                                    {
+                                        program.rightTriangle(x);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Введите ПОЛОЖИТЕЛЬНОЕ ЧИСЛО");
+                                    }
+                                    
                                 }
                                 catch (FormatException)
                                 {
@@ -342,18 +358,26 @@ namespace ConsoleApp2
                                     int arr_size = Convert.ToInt32(Console.ReadLine());
                                     Console.Write("x =: ");
                                     int x = Convert.ToInt32(Console.ReadLine());
-                                    
-                                    int[] arr = new int[arr_size];
 
-                                    for (int i = 0; i < arr_size; i++)
+                                    if (arr_size > 0)
                                     {
-                                        arr[i] = rnd.Next(0, 11);
-                                        Console.Write(arr[i] + " ");
-                                    }
-                                    Console.WriteLine();
+                                        int[] arr = new int[arr_size];
 
-                                    int result = program.findFirst(arr, x);
-                                    Console.WriteLine("Элемент: " + result);
+                                        for (int i = 0; i < arr_size; i++)
+                                        {
+                                            arr[i] = rnd.Next(0, 11);
+                                            Console.Write(arr[i] + " ");
+                                        }
+                                        Console.WriteLine();
+
+                                        int result = program.findFirst(arr, x);
+                                        Console.WriteLine("Элемент: " + result);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Массив не может быть отрицательным");
+                                    }
+
                                 }
                                 catch (FormatException)
                                 {
@@ -368,18 +392,25 @@ namespace ConsoleApp2
                                     Console.Write("Кол-во элементов =: ");
                                     int arr_size = Convert.ToInt32(Console.ReadLine());
 
-                                    int[] arr = new int[arr_size];
-
-                                    for (int i = 0; i < arr_size; i++)
+                                    if (arr_size > 0)
                                     {
-                                        arr[i] = rnd.Next(-10, 10);
-                                        Console.Write(arr[i] + " ");
+                                        int[] arr = new int[arr_size];
+
+                                        for (int i = 0; i < arr_size; i++)
+                                        {
+                                            arr[i] = rnd.Next(-10, 10);
+                                            Console.Write(arr[i] + " ");
+                                        }
+
+                                        Console.WriteLine();
+
+                                        int result = program.maxAbs(arr);
+                                        Console.WriteLine("Максимальный элемент: " + result);
                                     }
-
-                                    Console.WriteLine();
-
-                                    int result = program.maxAbs(arr);
-                                    Console.WriteLine("Максимальный элемент: " + result);
+                                    else
+                                    {
+                                        Console.WriteLine("Массив не может быть отрицательным");
+                                    }
                                 }
                                 catch (FormatException)
                                 {
@@ -396,42 +427,51 @@ namespace ConsoleApp2
                                     Console.WriteLine("Введите кол-во элементов в массиве номер 2: ");
                                     int arr_size_2 = Convert.ToInt32(Console.ReadLine());
 
-                                    Console.WriteLine("Введите число: ");
+                                    Console.WriteLine("Введите позицию: ");
                                     int pos = Convert.ToInt32(Console.ReadLine());
 
-                                    int[] arr1 = new int[arr_size_1];
-
-                                    Console.Write("Массив 1: ");
-                                    for (int i = 0; i < arr_size_1; i++)
+                                    if ((arr_size_1 > 0) && (arr_size_2 > 0) && (pos > 0) && (pos < arr_size_1))
                                     {
-                                        arr1[i] = rnd.Next(0, 10);
-                                        Console.Write(arr1[i] + " ");
+                                        int[] arr1 = new int[arr_size_1];
+
+                                        Console.Write("Массив 1: ");
+                                        for (int i = 0; i < arr_size_1; i++)
+                                        {
+                                            arr1[i] = rnd.Next(0, 10);
+                                            Console.Write(arr1[i] + " ");
+                                        }
+
+                                        Console.WriteLine();
+
+                                        int[] arr2 = new int[arr_size_2];
+
+                                        Console.Write("Массив 2: ");
+                                        for (int i = 0; i < arr_size_2; i++)
+                                        {
+                                            arr2[i] = rnd.Next(0, 10);
+                                            Console.Write(arr2[i] + " ");
+                                        }
+
+                                        Console.WriteLine();
+
+                                        int[] result = program.add(arr1, arr2, pos);
+
+
+                                        Console.WriteLine("Совмещенный массив: ");
+
+                                        for (int i = 0; i < result.Length; i++)
+                                        {
+                                            Console.Write(result[i] + " ");
+                                        }
+
+                                        Console.WriteLine();
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Массив не может быть отрицательным и число должно быть положительным");
                                     }
 
-                                    Console.WriteLine();
-
-                                    int[] arr2 = new int[arr_size_2];
-
-                                    Console.Write("Массив 2: ");
-                                    for (int i = 0; i < arr_size_2; i++)
-                                    {
-                                        arr2[i] = rnd.Next(0, 10);
-                                        Console.Write(arr2[i] + " ");
-                                    }
-
-                                    Console.WriteLine();
-
-                                    int[] result = program.add(arr1, arr2, pos);
-
-
-                                    Console.WriteLine("Совмещенный массив: ");
-
-                                    for (int i = 0; i < result.Length; i++)
-                                    {
-                                        Console.Write(result[i] + " ");
-                                    }
-
-                                    Console.WriteLine();
+                                    
                                     
                                 }
                                 catch (FormatException)
@@ -448,25 +488,33 @@ namespace ConsoleApp2
                                     Console.Write("Кол-во элементов =: ");
                                     int arr_size = Convert.ToInt32(Console.ReadLine());
 
-                                    int[] arr = new int[arr_size];
-
-                                    for (int i = 0; i < arr_size; i++)
+                                    if (arr_size > 0)
                                     {
-                                        arr[i] = rnd.Next(0, 10);
-                                        Console.Write(arr[i] + " ");
+                                        int[] arr = new int[arr_size];
+
+                                        for (int i = 0; i < arr_size; i++)
+                                        {
+                                            arr[i] = rnd.Next(0, 10);
+                                            Console.Write(arr[i] + " ");
+                                        }
+
+                                        Console.WriteLine();
+
+                                        int[] result = program.reverseBack(arr);
+                                        Console.WriteLine("Перевернутый массив: ");
+
+                                        for (int i = 0; i < result.Length; i++)
+                                        {
+                                            Console.Write(result[i] + " ");
+                                        }
+
+                                        Console.WriteLine();
                                     }
-
-                                    Console.WriteLine();
-
-                                    int[] result = program.reverseBack(arr);
-                                    Console.WriteLine("Перевернутый массив: ");
-
-                                    for (int i = 0; i < result.Length; i++)
+                                    else
                                     {
-                                        Console.Write(result[i] + " ");
+                                        Console.WriteLine("Массив не может быть отрицательным");
                                     }
-
-                                    Console.WriteLine();
+                                    
                                 }
                                 catch (FormatException)
                                 {
@@ -474,32 +522,39 @@ namespace ConsoleApp2
                                 }
                                 break;
                             case 9:
-                                Console.WriteLine("----| Возвратный реверс. |----");
+                                Console.WriteLine("----| Все вхождения. |----");
                                 try
                                 {
                                     Console.Write("Кол-во элементов =: ");
                                     int arr_size = Convert.ToInt32(Console.ReadLine());
                                     Console.Write("Какое число ищем? = : ");
                                     int x = Convert.ToInt32(Console.ReadLine());
-                                    int[] arr = new int[arr_size];
-
-                                    for (int i = 0; i < arr_size; i++)
+                                    if (arr_size > 0)
                                     {
-                                        arr[i] = rnd.Next(0, 10);
-                                        Console.Write(arr[i] + " ");
+                                        int[] arr = new int[arr_size];
+
+                                        for (int i = 0; i < arr_size; i++)
+                                        {
+                                            arr[i] = rnd.Next(0, 10);
+                                            Console.Write(arr[i] + " ");
+                                        }
+
+                                        Console.WriteLine();
+
+                                        int[] result = program.findAll(arr, x);
+                                        Console.WriteLine("Индексы найденного числа: ");
+
+                                        for (int i = 0; i < result.Length; i++)
+                                        {
+                                            Console.Write(result[i] + " ");
+                                        }
+
+                                        Console.WriteLine();
                                     }
-
-                                    Console.WriteLine();
-
-                                    int[] result = program.findAll(arr, x);
-                                    Console.WriteLine("Индексы найденного числа: ");
-
-                                    for (int i = 0; i < result.Length; i++)
+                                    else
                                     {
-                                        Console.Write(result[i] + " ");
+                                        Console.WriteLine("Массив не может быть отрицательным");
                                     }
-
-                                    Console.WriteLine();
                                 }
                                 catch (FormatException)
                                 {
@@ -523,7 +578,8 @@ namespace ConsoleApp2
 
         public double fraction(double x)
         {
-            return x - (int)x;
+            if (x > 0) return x - (int)x;
+            else return -(x - (int)x);
         }
 
         public int charToNum(char x)
@@ -533,7 +589,7 @@ namespace ConsoleApp2
 
         public bool is2Digits(int x)
         {
-            return x >= 10 && x <= 99;
+            return (x >= 10 && x <= 99) || (x <= -10 && x >= -99);
         }
 
         public bool isInRange(int a, int b, int num)
@@ -600,21 +656,42 @@ namespace ConsoleApp2
         public String listNums(int x)
         {
             String result = "";
-            for (int i = 0; i <= x; i++)
+            if (x > 0)
             {
-                result = result + Convert.ToString(i) + " ";
+                for (int i = 0; i <= x; i++)
+                {
+                    result = result + Convert.ToString(i) + " ";
+                }
+                return result;
             }
-            return result;
+            else
+            {
+                for (int i = 0; i >= x; i--)
+                {
+                    result = result + Convert.ToString(i) + " ";
+                }
+                return result;
+            }
         }
 
         public String chet(int x)
         {
             String result = "";
-            for (int i = 0; i <= x; i += 2)
-            {
-                result = result + Convert.ToString(i) + " ";
+            if (x > 0){
+                for (int i = 0; i <= x; i += 2)
+                {
+                    result = result + Convert.ToString(i) + " ";
+                }
+                return result;
             }
-            return result;
+            else
+            {
+                for (int i = 0; i >= x; i -= 2)
+                {
+                    result = result + Convert.ToString(i) + " ";
+                }
+                return result;
+            }
         }
 
         public int numLen(long x)
